@@ -1,0 +1,11 @@
+version: "3.8"
+
+services:
+  swagger:
+    image: swaggerapi/swagger-ui
+    ports:
+      - "8080:8080"
+    volumes:
+      - "./cadl-output/@cadl-lang/openapi3:/api"
+    environment:
+      SWAGGER_JSON: "/api/openapi.yaml"

@@ -1,0 +1,43 @@
+openapi: 3.0.0
+info:
+  title: Planist
+  version: '2023-02-23'
+  description: This is local server for Planist.
+tags: []
+paths:
+  /event-types:
+    get:
+      operationId: EventTypes_list
+      parameters: []
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/EventType'
+                x-cadl-name: EventType[]
+components:
+  schemas:
+    EventType:
+      type: object
+      properties:
+        id: {}
+        company_id:
+          nullable: true
+          x-cadl-name: integer | null
+        name:
+          type: string
+        color:
+          type: string
+      required:
+        - id
+        - company_id
+        - name
+        - color
+servers:
+  - url: https://api.planist.dev/
+    description: Single server endpoint
+    variables: {}

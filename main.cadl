@@ -1,0 +1,25 @@
+import "@cadl-lang/rest";
+import "@cadl-lang/openapi3";
+
+using Cadl.Http;
+
+@service({
+    title: "Planist",
+    version: "2023-02-23",
+})
+
+@server("https://api.planist.dev/", "Single server endpoint")
+@doc("This is local server for Planist.")
+namespace Planist;
+
+@route("/event-types")
+namespace EventTypes {
+    @get op list(): EventType[];
+}
+
+model EventType {
+    id: integer;
+    company_id: integer|null;
+    name: string;
+    color: string;
+}
